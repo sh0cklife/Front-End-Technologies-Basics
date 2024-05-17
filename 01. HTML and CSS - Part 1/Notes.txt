@@ -1,0 +1,46 @@
+HTML atributi, metadata, css introduction, css selectors, properties, typography in css, css units
+
+HTML == Hyper Text Markup Language
+
+Markup language = маркиращи елементи, всички елементи които виждаме имат свой таг
+разшиеренията са .html и .css
+
+тагове + чист текст = html документ
+
+семантична структура
+
+доm дърво: https://www.w3schools.com/whatis/whatis_htmldom.asp
+
+oswen html i css , stranicata sushto polzva JScript. JScript придава функционалността в страницата. HTML kzwa kyde e butona, css okrasqva butona, a js pridava funkciq na butona
+
+tagovete sa <p> and </p>
+<body> </body>
+начало и край/ отварящ и затварящ таг
+
+Коренния таг (root) началото на html док-а
+<html> </html>
+Метадата данните, дескрипшъни копирайт и етц.
+<meta> </meta>
+
+<!DOCTYPE html> - newest ver.
+
+1. Headings
+<h1> This is a level 1 heading</h1>
+<h1> This is a level 1 heading</h2>
+<h1> This is a level 1 heading</h3>
+<h1> This is a level 1 heading</h4>
+<h1> This is a level 1 heading</h5>
+<h6> This is a level 1 heading</h6> 
+<h7> This is a level 1 heading</h7> - https://boosted.orange.com/docs/4.6/content/typography/
+
+2. Paragraps
+<p> </p>
+
+https://stackoverflow.com/questions/7117949/how-to-auto-format-indent-xml-html-in-notepad
+
+<html> </html>
+
+<strong>text</strong> - BOLD
+<em> - Italic
+<a href="https://softuni.bg">text</a>
+<img scr= "/images/log.png> - няма затварящ таг
