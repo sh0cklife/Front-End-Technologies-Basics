@@ -4,13 +4,14 @@ body {
 }
 
 button {
-    background-color: #234465;
-    color: #FFAB00;
+    background-color: #097cee;
+    color: #f80707;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 23px;
+    font-size: 50px;
     padding: 20px 40px;
-    border: none;
+    border: double;
+    border-color: #f80707;
     border-radius: 15px;
     cursor: pointer;
     margin: 20px;
