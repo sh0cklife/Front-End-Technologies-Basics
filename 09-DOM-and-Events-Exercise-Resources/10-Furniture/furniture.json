@@ -1,5 +1,6 @@
-[{
-        "img": "https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
+[
+    {
+        "img": "https://www.ikea.com/gb/en/images/products/landskrona-3-seat-sofa-djuparp-dark-blue-wood__0990602_pe819086_s5.jpg?f=xl",
         "name": "Sofa",
         "price": "259",
         "decFactor": "0.4"
