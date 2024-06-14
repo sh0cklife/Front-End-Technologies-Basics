@@ -1,6 +1,6 @@
 {
     "name": "game-play",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "GamePlay Single Page Application",
     "main": "index.html",
     "scripts": {
@@ -17,6 +17,9 @@
         "page": "1.11.6"
     },
     "devDependencies": {
-        "http-server": "0.12.3"
+        "chai": "4.3.4",
+        "http-server": "0.12.3",
+        "mocha": "8.3.2",
+        "playwright-chromium": "1.9.2"
     }
 }
