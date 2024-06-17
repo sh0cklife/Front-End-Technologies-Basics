@@ -25,12 +25,18 @@ const CREATE_FORM = {
     DESCRIPTION: 'textarea[id="description"]',
     IMAGE: 'input[id="image"]',
     TYPE_OPTION: '#type',
-    ADD_BOOK_BUTTON: '#create-form input["type=submit"]'
+    ADD_BOOK_BUTTON: '#create-form input[type="submit"]'
 }
+
+const DETAILS_BUTTONS = '//a[text()="Details"]';
+
+const DETAILS_DESCRIPTION = '//h3[text()="Description:"]';
 
 export {
     NAVBAR,
     LOGIN_FORM,
     LOGGED_NAVBAR,
-    CREATE_FORM
+    CREATE_FORM,
+    DETAILS_BUTTONS,
+    DETAILS_DESCRIPTION
 }

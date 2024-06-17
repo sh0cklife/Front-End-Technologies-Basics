@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { NAVBAR, LOGIN_FORM, LOGGED_NAVBAR } from '../utilities/locators.js';
-import { ALERT, BASE_URL, TEST_URL, TEST_USER } from '../utilities/constants.js';
+import { NAVBAR, LOGIN_FORM, LOGGED_NAVBAR, CREATE_FORM, DETAILS_BUTTONS, DETAILS_DESCRIPTION } from '../utilities/locators.js';
+import { ALERT, ALL_BOOKS_LIST, BASE_URL, TEST_BOOK, TEST_URL, TEST_USER } from '../utilities/constants.js';
 
 // Navigation
 
@@ -137,8 +137,82 @@ test('Add book with correct data', async ({page}) => {
     await page.locator(LOGIN_FORM.PASSWORD).fill(TEST_USER.PASSWORD);
     
     await Promise.all([
-        await page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
-        await page.waitForURL(TEST_URL.TEST_CATALOG_URL)
+        page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
+        page.waitForURL(TEST_URL.TEST_CATALOG_URL)
     ]);
+
+    await page.locator(LOGGED_NAVBAR.ADD_BOOKS).click();
+    await page.locator(CREATE_FORM.TITLE).fill(TEST_BOOK.TITLE);
+    await page.locator(CREATE_FORM.DESCRIPTION).fill(TEST_BOOK.DESCRIPTION);
+    await page.locator(CREATE_FORM.IMAGE).fill(TEST_BOOK.IMAGE);
+    await page.locator(CREATE_FORM.TYPE_OPTION).selectOption(TEST_BOOK.TEST_BOOK_OPTIONS);
+    await page.locator(CREATE_FORM.ADD_BOOK_BUTTON).click();
     
+    await page.waitForURL(TEST_URL.TEST_CATALOG_URL);
+    expect(page.url()).toBe(TEST_URL.TEST_CATALOG_URL);
+})
+
+test('Login and verify that all books are displayed', async ({page}) => {
+    await page.goto(TEST_URL.TEST_LOGIN_URL);
+    await page.locator(LOGIN_FORM.EMAIL).fill(TEST_USER.EMAIL);
+    await page.locator(LOGIN_FORM.PASSWORD).fill(TEST_USER.PASSWORD);
+
+    await Promise.all([
+        page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
+        page.waitForURL(TEST_URL.TEST_CATALOG_URL)
+    ]);
+
+
+    const booksCount = await page.locator('//li[@class="otherBooks"]').count();
+    expect(booksCount).toBeGreaterThan(0);
+    
+})
+
+test('Verify That Logged-In User Sees Details Button and Button Works Correctly', async ({page}) => {
+    await page.goto(TEST_URL.TEST_LOGIN_URL);
+
+    await page.locator(LOGIN_FORM.EMAIL).fill(TEST_USER.EMAIL);
+    await page.locator(LOGIN_FORM.PASSWORD).fill(TEST_USER.PASSWORD);
+    
+    await Promise.all([
+        page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
+        page.waitForURL(TEST_URL.TEST_CATALOG_URL)
+    ]);
+
+    await page.locator(DETAILS_BUTTONS).first().click();
+    await expect(page.locator(DETAILS_DESCRIPTION)).toBeVisible();
+})
+
+//Logout functionality
+
+test('Verify that [Logout] button is visible after login', async ({page}) => {
+    await page.goto(TEST_URL.TEST_LOGIN_URL);
+
+    await page.locator(LOGIN_FORM.EMAIL).fill(TEST_USER.EMAIL);
+    await page.locator(LOGIN_FORM.PASSWORD).fill(TEST_USER.PASSWORD);
+    
+    await Promise.all([
+        page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
+        page.waitForURL(TEST_URL.TEST_CATALOG_URL)
+    ]);
+
+    await expect(page.locator(LOGGED_NAVBAR.LOGOUT)).toBeVisible();
+})
+
+test('Verify that [Logout] button redirects correctly', async ({page}) => {
+    await page.goto(TEST_URL.TEST_LOGIN_URL);
+
+    await page.locator(LOGIN_FORM.EMAIL).fill(TEST_USER.EMAIL);
+    await page.locator(LOGIN_FORM.PASSWORD).fill(TEST_USER.PASSWORD);
+    
+    await Promise.all([
+        page.locator(LOGIN_FORM.LOGIN_BUTTON).click(),
+        page.waitForURL(TEST_URL.TEST_CATALOG_URL)
+    ]);
+
+    await page.locator(LOGGED_NAVBAR.LOGOUT).click();
+
+    await page.waitForURL(TEST_URL.TEST_CATALOG_URL);
+    expect(page.url()).toBe(TEST_URL.TEST_CATALOG_URL);
+    await expect(page.locator(NAVBAR.LOGIN_BUTTON)).toBeVisible();
 })

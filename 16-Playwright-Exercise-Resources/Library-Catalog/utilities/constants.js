@@ -13,9 +13,16 @@ const TEST_USER = {
 }
 
 const TEST_BOOK = {
-    TITLE:
-    DESCRIPTION:
-    IMAGE:
+    TITLE: 'Test Book Title',
+    DESCRIPTION: 'Test Book Description',
+    IMAGE: 'https://example.com/book-image.jpg',
+    TEST_BOOK_OPTIONS: {
+        FICTION: 'Fiction',
+        ROMANCE: 'Romance',
+        MYSTERY: 'Mistery',
+        CLASSIC: 'Clasic',
+        OTHER: 'Other'
+    }
     
 }
 
@@ -23,9 +30,13 @@ const ALERT = {
     ALERT_MESSAGE: 'All fields are required!'
 }
 
+const ALL_BOOKS_LIST = '//li[@class="otherBooks"]';
+
 export {
     BASE_URL,
     TEST_URL,
     TEST_USER,
-    ALERT
+    ALERT,
+    TEST_BOOK,
+    ALL_BOOKS_LIST
 }
